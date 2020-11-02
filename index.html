@@ -323,6 +323,16 @@
       20)
       Create a function that given a phrase returns its acronym, like British Broadcasting Corporation returns BBC
       */
+  const getAcronym = (phrase) => {
+    let words = phrase.split(" ");
+    let accronym = "";
+    for (let i = 0; i < words.length; i++) {
+      accronym += words[i].charAt(0).toUpperCase();
+    }
+    return accronym;
+  };
+
+  //console.log(getAcronym("British Broadcasting Corporation"));
 
   /* 1) MAX CHAR
     Given a string, return the character that is most
