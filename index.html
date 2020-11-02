@@ -342,6 +342,36 @@
         maxChar("apple 1231111") === "1"
     */
 
+  const maxChar = (str) => {
+    let chars = str.split("");
+    let occurences = []; //array of objects which holds the char and its count
+
+    for (let i = 0; i < chars.length; i++) {
+      // push the first character into occurences
+      if (occurences.length === 0) {
+        occurences.push({ char: chars[i], count: 1 });
+      } else {
+        for (let j = 0; j < occurences.length; j++) {
+          if (chars[i] === occurences[j].char) {
+            occurences[j].count += 1;
+          } else {
+            occurences.push({ char: chars[i], count: 1 });
+          }
+        }
+      }
+    }
+
+    let highestCount = 0;
+    let char = "";
+    for (let i = 0; i < occurences.length; i++) {
+      if (occurences[i].count > highestCount) {
+        highestCount = occurences[i].count;
+        char = occurences[i].char;
+      }
+    }
+    return char;
+  };
+
   /* 2) ANAGRAMS
     Check to see if two provided strings are anagrams of each other.
     One string is an anagram of another if it uses the same characters
